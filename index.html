@@ -54,7 +54,7 @@
 
     <div class="firstpage">
       <div class="title">
-        <h1>Merceedes photobooth -rbg2</h1>
+        <h1>Merceedes photobooth -rbg3</h1>
       </div>
       <div
         id="carouselExampleControls"
@@ -217,27 +217,29 @@
       // import { removeBackground } from "./remove-background.js";
       var displayImage = document.getElementById("nobgimg");
       var snapImage = document.getElementById("snapimage");
-      document
-        .getElementById("bgsel2")
-        .addEventListener("onclick", async () => {
-          //trying bg remover code here:
-          const formData = new FormData();
-          formData.append("image_file", snapImage);
-          const response = await fetch("https://sdk.photoroom.com/v1/segment", {
-            method: "POST",
-            headers: {
-              "X-Api-Key": "155ac5d116ed0bf1a5dc18dc977ceee8c109f0b4", //api key here
-            },
-            body: formData,
-          });
-          if (!response.ok) {
-            console.error(response.json());
-            throw new Error("Network response was not ok");
-          }
-          const imageBlob = response.blob();
-          $("#nobgimg").attr("src", imageBlob);
-          finalResult();
+      document.getElementById("bgsel2").addEventListener("click", async () => {
+        //trying bg remover code here:
+        const formData = new FormData();
+        formData.append("image_file", snapImage);
+        const url = "https://sdk.photoroom.com/v1/segment";
+
+        // Please replace with your own apiKey
+        const apiKey = "155ac5d116ed0bf1a5dc18dc977ceee8c109f0b4";
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "X-Api-Key": apiKey, //api key here
+          },
+          body: formData,
         });
+        if (!response.ok) {
+          console.error(response.json());
+          throw new Error("Network response was not ok");
+        }
+        const imageBlob = await response.blob();
+        $("#nobgimg").attr("src", imageBlob);
+        finalResult();
+      });
       function finalResult() {
         $(".secondpage").hide();
         var canvas = document.getElementById("imageCanvas");
