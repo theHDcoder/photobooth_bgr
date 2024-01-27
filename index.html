@@ -42,6 +42,11 @@
         border-radius: 14px;
         font-size: 25pt;
       }
+      #imagecanvas {
+        position: absolute;
+        top: 23vw;
+        right: -6vw;
+      }
     </style>
   </head>
   <body>
@@ -145,11 +150,18 @@
 
     <!-- start 3rd page -->
     <div class="thirdpage" style="display: none">
-      <div class="output mt-5" style="margin-top: 15vw">
+      <div class="output" style="margin-top: 15vw">
         <canvas id="imageCanvas" width="1280" height="853"></canvas>
         <img id="bgimg" src="" alt="" style="display: none" />
-        <a id="lnkDownload" href="#">Save image</a>
       </div>
+      <button
+        id="imgdwnld"
+        type="button"
+        class="btn btn-primary"
+        onclick="download()"
+      >
+        Download
+      </button>
     </div>
     <!-- end of 3rd page -->
     <script>
@@ -214,26 +226,28 @@
           " assets/image_mercedes" + localStorage.getItem("bgid") + ".jpg"
         );
         ctx.drawImage(document.getElementById("bgimg"), 0, 0);
+        destX = 370;
+        destY = 235;
         ctx.drawImage(
           document.getElementById("snapimage"),
           0,
           0,
           960,
           1280,
-          213,
-          283,
-          366,
-          566
+          destX,
+          destY,
+          217,
+          289
         );
 
         canvas.setAttribute("style", "transform:rotateZ(90deg)");
       }
-      var download = function () {
+      function download() {
         var link = document.createElement("a");
         link.download = "filename.png";
         link.href = document.getElementById("imageCanvas").toDataURL();
         link.click();
-      };
+      }
     </script>
   </body>
 </html>
