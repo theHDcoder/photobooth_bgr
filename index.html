@@ -54,7 +54,7 @@
 
     <div class="firstpage">
       <div class="title">
-        <h1>Merceedes photobooth -rbg4</h1>
+        <h1>Merceedes photobooth -rbg5</h1>
       </div>
       <div
         id="carouselExampleControls"
@@ -156,7 +156,14 @@
       <div class="output" style="margin-top: 15vw">
         <canvas id="imageCanvas" width="1280" height="853"></canvas>
         <img id="bgimg" src="" alt="" style="display: none" />
-        <img id="nobgimg" src="" alt="" style="display: none" />
+        <img
+          id="nobgimg"
+          width="217"
+          height="289"
+          src=""
+          alt=""
+          style="display: none"
+        />
       </div>
       <button
         id="imgdwnld"
@@ -223,26 +230,6 @@
       var displayImage = document.getElementById("nobgimg");
       var snapImage = document.getElementById("snapimage");
 
-      // function convertURIToImageData(URI) {
-      //   return new Promise(function (resolve, reject) {
-      //     if (URI == null) return reject();
-      //     var canvas = document.createElement("canvas"),
-      //       context = canvas.getContext("2d"),
-      //       image = new Image();
-      //     image.addEventListener(
-      //       "load",
-      //       function () {
-      //         canvas.width = image.width;
-      //         canvas.height = image.height;
-      //         context.drawImage(image, 0, 0, canvas.width, canvas.height);
-      //         resolve(context.getImageData(0, 0, canvas.width, canvas.height));
-      //       },
-      //       false
-      //     );
-      //     image.src = URI;
-      //   });
-      // }
-      // var imgURL = "";
       function dataURLtoFile(dataurl, filename) {
         var arr = dataurl.split(","),
           mime = arr[0].match(/:(.*?);/)[1],
@@ -290,10 +277,16 @@
           "src",
           " assets/image_mercedes" + localStorage.getItem("bgid") + ".jpg"
         );
-        ctx.drawImage(document.getElementById("bgimg"), 0, 0);
+        // ctx.drawImage(document.getElementById("bgimg"), 0, 0);
         destX = 370;
         destY = 235;
-        ctx.drawImage(displayImage, 0, 0, 960, 1280, destX, destY, 217, 289);
+        ctx.drawImage(
+          document.getElementById("nobgimg"),
+          destX,
+          destY,
+          960,
+          1280
+        );
 
         canvas.setAttribute("style", "transform:rotateZ(90deg)");
 
