@@ -18,23 +18,18 @@
       form > input {
         margin-right: 15px;
       }
-      #results {
+      /* #results {
         float: right;
         margin: 20px;
         padding: 20px;
         border: 1px solid;
         background: #ccc;
-      }
+      } */
     </style>
   </head>
   <body>
-    <div id="results">Your captured image will appear here...</div>
-
-    <h1>WebcamJS Test Page</h1>
-    <h3>Demonstrates simple 320x240 capture &amp; display</h3>
-
     <div id="my_camera"></div>
-
+    <div id="results"></div>
     <!-- First, include the Webcam.js JavaScript Library -->
     <script type="text/javascript" src="webcam.min.js"></script>
 
@@ -42,9 +37,10 @@
     <script language="JavaScript">
       Webcam.set({
         width: 720,
-        height: 1280,
+        height: 962,
         image_format: "jpeg",
         jpeg_quality: 90,
+        flip_horiz: true,
       });
       Webcam.set("constraints", {
         facingMode: "environment",
