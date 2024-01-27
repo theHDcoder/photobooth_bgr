@@ -228,6 +228,12 @@
 
         canvas.setAttribute("style", "transform:rotateZ(90deg)");
       }
+      var download = function () {
+        var link = document.createElement("a");
+        link.download = "filename.png";
+        link.href = document.getElementById("imageCanvas").toDataURL();
+        link.click();
+      };
     </script>
   </body>
 </html>
