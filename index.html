@@ -54,7 +54,7 @@
 
     <div class="firstpage">
       <div class="title">
-        <h1>Merceedes photobooth</h1>
+        <h1>Merceedes photobooth -rbg</h1>
       </div>
       <div
         id="carouselExampleControls"
@@ -122,16 +122,14 @@
     <!-- end of first page -->
 
     <!-- second page -->
-    <div class="secondpage" style="display: none">
+    <div
+      class="secondpage"
+      style="display: none; position: absolute; top: 0; left: 0"
+    >
       <div id="my_camera" onclick="take_snapshot() "></div>
       <div id="results" style="display: none">
         <img id="snapimage" alt="" />
-        <button
-          id="bgsel2"
-          type="button"
-          class="btn btn-primary"
-          onclick="finalResult()"
-        >
+        <button id="bgsel2" type="button" class="btn btn-primary">
           Select
         </button>
       </div>
@@ -153,6 +151,7 @@
       <div class="output" style="margin-top: 15vw">
         <canvas id="imageCanvas" width="1280" height="853"></canvas>
         <img id="bgimg" src="" alt="" style="display: none" />
+        <img id="nobgimg" src="" alt="" style="display: none" />
       </div>
       <button
         id="imgdwnld"
@@ -215,9 +214,28 @@
         $("#my_camera").hide();
       }
 
+      // removw background
+      import { removeBackground } from "./remove-background.js";
+      var displayImage = doucument.getElementById("nobgimg");
+      doucument
+        .getElementById("bgsel2")
+        .addEventListener("onclick", async () => {
+          const files = fileInput.files;
+          if (files && files.length > 0) {
+            try {
+              const imageBlob = await removeBackground(
+                document.getElementById("snapimage")
+              ); // 👈 API call is here
+              const objectURL = URL.createObjectURL(imageBlob);
+              displayImage.src = objectURL;
+            } catch (error) {
+              console.error("Error:", error);
+            }
+          }
+        });
+
       function finalResult() {
         $(".secondpage").hide();
-        $(".thirdpage").show();
         var canvas = document.getElementById("imageCanvas");
         var ctx = canvas.getContext("2d");
         $("#bgimg").attr(
@@ -227,19 +245,11 @@
         ctx.drawImage(document.getElementById("bgimg"), 0, 0);
         destX = 370;
         destY = 235;
-        ctx.drawImage(
-          document.getElementById("snapimage"),
-          0,
-          0,
-          960,
-          1280,
-          destX,
-          destY,
-          217,
-          289
-        );
+        ctx.drawImage(displayImage, 0, 0, 960, 1280, destX, destY, 217, 289);
 
         canvas.setAttribute("style", "transform:rotateZ(90deg)");
+
+        $(".thirdpage").show();
       }
       function download() {
         var link = document.createElement("a");
