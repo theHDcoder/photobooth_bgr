@@ -145,7 +145,7 @@
 
     <!-- start 3rd page -->
     <div class="thirdpage" style="display: none">
-      <div class="output">
+      <div class="output mt-5" style="margin-top: 15vw">
         <canvas id="imageCanvas" width="1280" height="853"></canvas>
         <img id="bgimg" src="" alt="" style="display: none" />
         <a id="lnkDownload" href="#">Save image</a>
@@ -214,7 +214,17 @@
           " assets/image_mercedes" + localStorage.getItem("bgid") + ".jpg"
         );
         ctx.drawImage(document.getElementById("bgimg"), 0, 0);
-        ctx.drawImage(document.getElementById("snapimage"), 0, 0);
+        ctx.drawImage(
+          document.getElementById("snapimage"),
+          0,
+          0,
+          960,
+          1280,
+          213,
+          283,
+          366,
+          566
+        );
 
         canvas.setAttribute("style", "transform:rotateZ(90deg)");
       }
