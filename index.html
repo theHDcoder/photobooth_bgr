@@ -129,7 +129,12 @@
       <div id="my_camera" onclick="take_snapshot() "></div>
       <div id="results" style="display: none">
         <img id="snapimage" alt="" />
-        <button id="bgsel2" type="button" class="btn btn-primary">
+        <button
+          id="bgsel2"
+          onclick="removebg()"
+          type="button"
+          class="btn btn-primary"
+        >
           Select
         </button>
       </div>
@@ -217,29 +222,66 @@
       // import { removeBackground } from "./remove-background.js";
       var displayImage = document.getElementById("nobgimg");
       var snapImage = document.getElementById("snapimage");
-      document.getElementById("bgsel2").addEventListener("click", async () => {
-        //trying bg remover code here:
-        const formData = new FormData();
-        formData.append("image_file", snapImage);
-        const url = "https://sdk.photoroom.com/v1/segment";
 
-        // Please replace with your own apiKey
-        const apiKey = "155ac5d116ed0bf1a5dc18dc977ceee8c109f0b4";
-        const response = await fetch(url, {
+      // function convertURIToImageData(URI) {
+      //   return new Promise(function (resolve, reject) {
+      //     if (URI == null) return reject();
+      //     var canvas = document.createElement("canvas"),
+      //       context = canvas.getContext("2d"),
+      //       image = new Image();
+      //     image.addEventListener(
+      //       "load",
+      //       function () {
+      //         canvas.width = image.width;
+      //         canvas.height = image.height;
+      //         context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      //         resolve(context.getImageData(0, 0, canvas.width, canvas.height));
+      //       },
+      //       false
+      //     );
+      //     image.src = URI;
+      //   });
+      // }
+      // var imgURL = "";
+      function dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(","),
+          mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]),
+          n = bstr.length,
+          u8arr = new Uint8Array(n);
+        while (n--) {
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, { type: mime });
+      }
+
+      function removebg() {
+        var fileData = dataURLtoFile(snapImage.src, "imageName.jpg");
+        // Multipart file
+        const formData = new FormData();
+        formData.append("image_file", fileData);
+        formData.append("size", "auto");
+
+        const apiKey = "ZPAatNwnJvZgGo3iqaVSPzmk";
+
+        fetch("https://api.remove.bg/v1.0/removebg", {
           method: "POST",
           headers: {
-            "X-Api-Key": apiKey, //api key here
+            "X-Api-Key": apiKey,
           },
           body: formData,
-        });
-        if (!response.ok) {
-          console.error(response.json());
-          throw new Error("Network response was not ok");
-        }
-        const imageBlob = await response.blob();
-        $("#nobgimg").attr("src", imageBlob);
-        finalResult();
-      });
+        })
+          .then(function (reponse) {
+            return reponse.blob();
+          })
+          .then(function (blob) {
+            console.log(blob);
+            const url = URL.createObjectURL(blob);
+            displayImage.src = url;
+            finalResult();
+          })
+          .catch();
+      }
       function finalResult() {
         $(".secondpage").hide();
         var canvas = document.getElementById("imageCanvas");
