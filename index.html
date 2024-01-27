@@ -54,7 +54,7 @@
 
     <div class="firstpage">
       <div class="title">
-        <h1>Merceedes photobooth -rbg5</h1>
+        <h1>Merceedes photobooth -rbg6</h1>
       </div>
       <div
         id="carouselExampleControls"
@@ -277,15 +277,15 @@
           "src",
           " assets/image_mercedes" + localStorage.getItem("bgid") + ".jpg"
         );
-        // ctx.drawImage(document.getElementById("bgimg"), 0, 0);
+        ctx.drawImage(document.getElementById("bgimg"), 0, 0);
         destX = 370;
         destY = 235;
         ctx.drawImage(
           document.getElementById("nobgimg"),
           destX,
           destY,
-          960,
-          1280
+          217,
+          289
         );
 
         canvas.setAttribute("style", "transform:rotateZ(90deg)");
