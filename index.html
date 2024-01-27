@@ -54,7 +54,7 @@
 
     <div class="firstpage">
       <div class="title">
-        <h1>Merceedes photobooth -rbg6</h1>
+        <h1>Merceedes photobooth -rbg7</h1>
       </div>
       <div
         id="carouselExampleControls"
@@ -154,13 +154,18 @@
     <!-- start 3rd page -->
     <div class="thirdpage" style="display: none">
       <div class="output" style="margin-top: 15vw">
-        <canvas id="imageCanvas" width="1280" height="853"></canvas>
+        <canvas
+          id="imageCanvas"
+          width="1280"
+          height="853"
+          style="width: 60vw"
+        ></canvas>
         <img id="bgimg" src="" alt="" style="display: none" />
         <img
           id="nobgimg"
           width="217"
           height="289"
-          src=""
+          src="testimg.png"
           alt=""
           style="display: none"
         />
@@ -265,7 +270,7 @@
             console.log(blob);
             const url = URL.createObjectURL(blob);
             displayImage.src = url;
-            finalResult();
+            setTimeout(finalResult, 2000);
           })
           .catch();
       }
@@ -280,15 +285,10 @@
         ctx.drawImage(document.getElementById("bgimg"), 0, 0);
         destX = 370;
         destY = 235;
-        ctx.drawImage(
-          document.getElementById("nobgimg"),
-          destX,
-          destY,
-          217,
-          289
-        );
+        const imgd = document.getElementById("nobgimg");
+        ctx.drawImage(imgd, destX, destY);
 
-        canvas.setAttribute("style", "transform:rotateZ(90deg)");
+        //canvas.setAttribute("style", "transform:rotateZ(90deg)");
 
         $(".thirdpage").show();
       }
