@@ -194,7 +194,7 @@
         style="position: absolute"
         onclick="take_snapshot() "
       ></div>
-      <img id="hint" src="hint.png" alt="" />
+      <!-- <img id="hint" src="hint.png" alt="" /> -->
 
       <div id="results" style="display: none">
         <img id="snapimage" alt="" />
@@ -419,7 +419,7 @@
         link.download =
           document.getElementById("firstname").value +
           document.getElementById("lastname").value +
-          getElementById("exampleInputEmail1").value +
+          document.getElementById("exampleInputEmail1").value +
           randNum +
           ".png";
         link.href = document.getElementById("imageCanvas").toDataURL();
