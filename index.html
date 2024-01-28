@@ -25,7 +25,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://apis.google.com/js/api.js"></script>
     <style>
       body {
         background-color: #185c7e;
@@ -54,7 +54,7 @@
 
     <div class="firstpage">
       <div class="title">
-        <h1>Merceedes photobooth -rbg11</h1>
+        <h1>Merceedes photobooth -rbg12</h1>
       </div>
       <div
         id="carouselExampleControls"
@@ -287,16 +287,16 @@
         const imgd = document.getElementById("nobgimg");
 
         if (localStorage.getItem("bgid") == 0) {
-          destX = 353;
-          destY = 268;
+          destX = 358;
+          destY = 272;
           ctx.drawImage(imgd, destX, destY, 196, 261);
         } else if (localStorage.getItem("bgid") == 1) {
           destX = 420;
-          destY = 253;
+          destY = 245;
           ctx.drawImage(imgd, destX, destY, 236, 314);
         } else if (localStorage.getItem("bgid") == 2) {
           destX = 420;
-          destY = 253;
+          destY = 245;
           ctx.drawImage(imgd, destX, destY, 236, 314);
         }
 
@@ -304,7 +304,35 @@
 
         $(".thirdpage").show();
       }
+      function uploadToGDrive() {
+        var fileContent = document.getElementById("imageCanvas").toDataURL(); // As a sample, upload a text file.
+        var file = new Blob([fileContent], { type: "image/png" });
+        var metadata = {
+          name: "test.png", // Filename at Google Drive
+          mimeType: "image/png", // mimeType at Google Drive
+          parents: ["1Fj__4LvJC6HpKq7OmpaVn3FZAwGxflt-"], // Folder ID at Google Drive
+        };
 
+        var accessToken = gapi.auth.getToken().access_token; // Here gapi is used for retrieving the access token.
+        var form = new FormData();
+        form.append(
+          "metadata",
+          new Blob([JSON.stringify(metadata)], { type: "application/json" })
+        );
+        form.append("file", file);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open(
+          "post",
+          "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id"
+        );
+        xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+        xhr.responseType = "json";
+        xhr.onload = () => {
+          console.log(xhr.response.id); // Retrieve uploaded file ID.
+        };
+        xhr.send(form);
+      }
       function download() {
         var link = document.createElement("a");
         link.download = "filename.png";
