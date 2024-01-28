@@ -282,16 +282,29 @@
           "src",
           " assets/image_mercedes" + localStorage.getItem("bgid") + ".jpg"
         );
+
         ctx.drawImage(document.getElementById("bgimg"), 0, 0);
-        destX = 350;
-        destY = 268;
         const imgd = document.getElementById("nobgimg");
-        ctx.drawImage(imgd, destX, destY, 196, 261);
+
+        if (localStorage.getItem("bgid") == 0) {
+          destX = 353;
+          destY = 268;
+          ctx.drawImage(imgd, destX, destY, 196, 261);
+        } else if (localStorage.getItem("bgid") == 1) {
+          destX = 420;
+          destY = 253;
+          ctx.drawImage(imgd, destX, destY, 236, 314);
+        } else if (localStorage.getItem("bgid") == 2) {
+          destX = 420;
+          destY = 253;
+          ctx.drawImage(imgd, destX, destY, 236, 314);
+        }
 
         //canvas.setAttribute("style", "transform:rotateZ(90deg)");
 
         $(".thirdpage").show();
       }
+
       function download() {
         var link = document.createElement("a");
         link.download = "filename.png";
