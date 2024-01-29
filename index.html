@@ -392,7 +392,7 @@
         class="loader"
         style="
           display: none;
-          justify-content: center;
+
           color: #ecf0f1;
           margin-top: 10vw;
         "
@@ -419,8 +419,8 @@
         />
         <img
           id="nobgimg"
-          width="217"
-          height="289"
+          width="275"
+          height="366"
           src=""
           alt=""
           style="display: none"
@@ -580,7 +580,7 @@
       function removebg() {
         $(".secondpage").show();
         $(".camstuff").hide();
-        $(".loader").css("display", "flex");
+        $(".loader").show();
         //uncomment below
         var fileData = dataURLtoFile(snapImage.src, "imageName.jpg");
         // Multipart file
@@ -588,7 +588,7 @@
         formData.append("image_file", fileData);
         formData.append("size", "auto");
 
-        const apiKey = "ZPAatNwnJvZgGo3iqaVSPzmk";
+        const apiKey = "ErMeBD3vNQ2jQaddXiWy3w2h";
 
         fetch("https://api.remove.bg/v1.0/removebg", {
           method: "POST",
@@ -634,9 +634,9 @@
         //   ctx.drawImage(imgd, destX, destY, 236, 314);
         // }
 
-        destX = 420;
-        destY = 250;
-        ctx.drawImage(imgd, destX, destY, 236, 314);
+        destX = 381;
+        destY = 202;
+        ctx.drawImage(imgd, destX, destY, 275, 366);
         addFileToBucket(
           "photobooth",
           dataURLtoFile(document.getElementById("imageCanvas").toDataURL()),
