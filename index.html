@@ -132,7 +132,7 @@
       #hint {
         width: 100vw;
         position: absolute;
-        height: 100vh;
+        /* height: 100vh; */
         left: -2vw;
       }
     </style>
@@ -359,7 +359,7 @@
         <img
           id="hint"
           width="962"
-          height="1280"
+          height="auto"
           onclick="take_snapshot()"
           src="hint.png"
           alt=""
@@ -461,15 +461,15 @@
           if (document.getElementById("exampleInputEmail1").value == "") {
             document.getElementById("exampleInputEmail1").value = "_";
           }
-          if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-          } else if (elem.webkitRequestFullscreen) {
-            /* Safari */
-            elem.webkitRequestFullscreen();
-          } else if (elem.msRequestFullscreen) {
-            /* IE11 */
-            elem.msRequestFullscreen();
-          }
+          // if (elem.requestFullscreen) {
+          //   elem.requestFullscreen();
+          // } else if (elem.webkitRequestFullscreen) {
+          //   /* Safari */
+          //   elem.webkitRequestFullscreen();
+          // } else if (elem.msRequestFullscreen) {
+          //   /* IE11 */
+          //   elem.msRequestFullscreen();
+          // }
           $(".pagezero").hide();
           // $(".firstpage").show();
           // $(".firstpage").hide();
