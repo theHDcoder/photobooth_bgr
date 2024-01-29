@@ -30,11 +30,14 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.768.0.js"></script>
     <script src="bucketsender.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.js"></script>
+    <link rel="stylesheet" href="style.css" />
     <style>
-      body {
+      /* body {
         background-color: #185c7e;
         height: 100vh;
-      }
+      } */
+
+      /*       
       .pagezero {
         font-family: "Poppins", sans-serif;
         color: #ecf0f1;
@@ -108,7 +111,7 @@
 
       .register-button:hover {
         color: #3498db;
-      }
+      } */
       .title {
         padding: 50px;
         margin: 3vw;
@@ -135,12 +138,12 @@
     </style>
   </head>
   <body>
-    <div class="title">
-      <h1>Mercedes photobooth -f3</h1>
-    </div>
+    <!-- <div class="title">
+      <h1>Mercedes-Benz Photobooth</h1>
+    </div> -->
     <!-- start of pagezero -->
     <div class="pagezero">
-      <div class="login-container">
+      <!-- <div class="login-container">
         <div class="login-header">
           <h2>Login</h2>
         </div>
@@ -182,13 +185,108 @@
             Submit
           </button>
         </div>
+      </div> -->
+
+      <div class="container">
+        <div class="login-box">
+          <!-- <h2>Login</h2> -->
+          <form action="#">
+            <div class="input-box">
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                placeholder="*required"
+                aria-label="First name"
+                autocomplete="off"
+              />
+              <label>First Name :</label>
+            </div>
+            <div class="input-box">
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                placeholder="*required"
+                aria-label="Last name"
+                autocomplete="off"
+              />
+              <label>Last Name :</label>
+            </div>
+            <div class="input-box">
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                placeholder="optional"
+                aria-describedby="emailHelp"
+                autocomplete="off"
+              />
+              <label>Email :</label>
+            </div>
+
+            <button type="submit" class="btn" onclick="submitButton()">
+              Start
+            </button>
+          </form>
+        </div>
+        <span style="--i: 0"></span>
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span style="--i: 3"></span>
+        <span style="--i: 4"></span>
+        <span style="--i: 5"></span>
+        <span style="--i: 6"></span>
+        <span style="--i: 7"></span>
+        <span style="--i: 8"></span>
+        <span style="--i: 9"></span>
+        <span style="--i: 10"></span>
+        <span style="--i: 11"></span>
+        <span style="--i: 12"></span>
+        <span style="--i: 13"></span>
+        <span style="--i: 14"></span>
+        <span style="--i: 15"></span>
+        <span style="--i: 16"></span>
+        <span style="--i: 17"></span>
+        <span style="--i: 18"></span>
+        <span style="--i: 19"></span>
+        <span style="--i: 20"></span>
+        <span style="--i: 21"></span>
+        <span style="--i: 22"></span>
+        <span style="--i: 23"></span>
+        <span style="--i: 24"></span>
+        <span style="--i: 25"></span>
+        <span style="--i: 26"></span>
+        <span style="--i: 27"></span>
+        <span style="--i: 28"></span>
+        <span style="--i: 29"></span>
+        <span style="--i: 30"></span>
+        <span style="--i: 31"></span>
+        <span style="--i: 32"></span>
+        <span style="--i: 33"></span>
+        <span style="--i: 34"></span>
+        <span style="--i: 35"></span>
+        <span style="--i: 36"></span>
+        <span style="--i: 37"></span>
+        <span style="--i: 38"></span>
+        <span style="--i: 39"></span>
+        <span style="--i: 40"></span>
+        <span style="--i: 41"></span>
+        <span style="--i: 42"></span>
+        <span style="--i: 43"></span>
+        <span style="--i: 44"></span>
+        <span style="--i: 45"></span>
+        <span style="--i: 46"></span>
+        <span style="--i: 47"></span>
+        <span style="--i: 48"></span>
+        <span style="--i: 49"></span>
       </div>
     </div>
     <!-- end of page zero -->
 
     <!-- start of first page -->
 
-    <div class="firstpage" style="display: none">
+    <!-- <div class="firstpage" style="display: none">
       <div
         id="carouselExampleControls"
         class="carousel slide"
@@ -251,14 +349,21 @@
           Select
         </button>
       </div>
-    </div>
+    </div> -->
     <!-- end of first page -->
 
     <!-- second page -->
     <div class="secondpage" style="display: none">
       <div class="camstuff" style="display: flex; justify-content: center">
-        <div id="my_camera" onclick="take_snapshot() "></div>
-        <!-- <img id="hint" onclick="take_snapshot()" src="hint.png" alt="" /> -->
+        <div id="my_camera" onclick="take_snapshot()"></div>
+        <img
+          id="hint"
+          width="962"
+          height="1280"
+          onclick="take_snapshot()"
+          src="hint.png"
+          alt=""
+        />
         <div id="results" style="display: none">
           <img id="snapimage" alt="" />
           <div class="cambtns" style="display: flex; justify-content: center">
@@ -292,40 +397,56 @@
           margin-top: 10vw;
         "
       >
-        <img src="assets/Loader.gif" alt="" />
-        <h1>"Loading..."</h1>
+        <img src="assets/loader.gif" alt="" />
       </div>
     </div>
     <!-- end second page -->
 
     <!-- start 3rd page -->
     <div class="thirdpage" style="display: none">
-      <div class="output" style="margin-top: 15vw">
+      <div class="output">
         <canvas
           id="imageCanvas"
           width="1280"
           height="853"
           style="width: 60vw"
         ></canvas>
-        <img id="bgimg" src="" alt="" style="display: none" />
+        <img
+          id="bgimg"
+          src="assets/image_mercedes1.jpg"
+          alt=""
+          style="display: none"
+        />
         <img
           id="nobgimg"
           width="217"
           height="289"
-          src="testimg.png"
+          src=""
           alt=""
           style="display: none"
         />
-        <div id="qrcode"></div>
       </div>
       <button
         id="imgdwnld"
         type="button"
         class="btn btn-primary"
+        style="margin-top: 4vw"
         onclick="download()"
       >
         Download
       </button>
+      <button
+        id="imgdwnld"
+        type="button"
+        class="btn btn-primary"
+        style="margin-top: 4vw"
+        onclick="ShareUsingQR()"
+      >
+        Share
+      </button>
+    </div>
+    <div class="fourthpage" style="display: none">
+      <div id="qrcode"></div>
     </div>
     <!-- end of 3rd page -->
     <script>
@@ -340,59 +461,72 @@
             document.getElementById("exampleInputEmail1").value = "_";
           }
           $(".pagezero").hide();
-          $(".firstpage").show();
+          // $(".firstpage").show();
+          // $(".firstpage").hide();
+          $(".secondpage").show();
+          Webcam.set({
+            width: 962,
+            height: 1280,
+            image_format: "jpeg",
+            jpeg_quality: 90,
+          });
+          Webcam.set("constraints", {
+            facingMode: "environment",
+          });
+          Webcam.attach("#my_camera");
         }
       }
-      $(".carousel").carousel({
-        interval: 9000000,
-      });
-      id = 0;
       let randNum = Math.random() * 10000;
-      function prev(ele) {
-        if (id == 1) {
-          document.getElementById(ele).style.visibility = "hidden";
-        }
-        id--;
-        document.getElementById("next").style.visibility = "visible";
-        console.log(id, ele);
-      }
-      function next(ele) {
-        if (id < 3) {
-          id++;
-          document.getElementById("prev").style.visibility = "visible";
-        }
-        if (id == 2) {
-          document.getElementById(ele).style.visibility = "hidden";
-        }
-        console.log(id, ele);
-      }
-      function BgSelection() {
-        localStorage.setItem("bgid", id);
-        console.log(localStorage.getItem("bgid"));
-        $(".firstpage").hide();
-        $(".secondpage").show();
-        Webcam.set({
-          width: 962,
-          height: 1280,
-          image_format: "jpeg",
-          jpeg_quality: 90,
-        });
-        Webcam.set("constraints", {
-          facingMode: "environment",
-        });
-        Webcam.attach("#my_camera");
-        // setTimeout(
-        //   document
-        //     .getElementById("my_camera")
-        //     .appendChild(document.getElementById("hint")),
-        //   1000
-        // );
-      }
+      // $(".carousel").carousel({
+      //   interval: 9000000,
+      // });
+      // id = 0;
+      // let randNum = Math.random() * 10000;
+      // function prev(ele) {
+      //   if (id == 1) {
+      //     document.getElementById(ele).style.visibility = "hidden";
+      //   }
+      //   id--;
+      //   document.getElementById("next").style.visibility = "visible";
+      //   console.log(id, ele);
+      // }
+      // function next(ele) {
+      //   if (id < 3) {
+      //     id++;
+      //     document.getElementById("prev").style.visibility = "visible";
+      //   }
+      //   if (id == 2) {
+      //     document.getElementById(ele).style.visibility = "hidden";
+      //   }
+      //   console.log(id, ele);
+      // }
+      // function BgSelection() {
+      //   localStorage.setItem("bgid", id);
+      //   console.log(localStorage.getItem("bgid"));
+      //   $(".firstpage").hide();
+      //   $(".secondpage").show();
+      //   Webcam.set({
+      //     width: 962,
+      //     height: 1280,
+      //     image_format: "jpeg",
+      //     jpeg_quality: 90,
+      //   });
+      //   Webcam.set("constraints", {
+      //     facingMode: "environment",
+      //   });
+      //   Webcam.attach("#my_camera");
+      //   // setTimeout(
+      //   //   document
+      //   //     .getElementById("my_camera")
+      //   //     .appendChild(document.getElementById("hint")),
+      //   //   1000
+      //   // );
+      // }
       function retake() {
         $(".secondpage").show();
 
         document.getElementById("my_camera").style.display = "block";
-        // $("#hint").show();
+        $("#hint").show();
         document.getElementById("results").style.display = "none";
         Webcam.set({
           width: 962,
@@ -414,7 +548,7 @@
         });
         Webcam.reset();
         $("#my_camera").hide();
-        // $("#hint").hide();
+        $("#hint").hide();
       }
       // removw background
       // import { removeBackground } from "./remove-background.js";
@@ -463,32 +597,36 @@
             setTimeout(finalResult, 2000);
           })
           .catch();
-        //  setTimeout(finalResult, 50000);
+        // setTimeout(finalResult, 3000);
       }
       function finalResult() {
         var canvas = document.getElementById("imageCanvas");
         var ctx = canvas.getContext("2d");
-        $("#bgimg").attr(
-          "src",
-          " assets/image_mercedes" + localStorage.getItem("bgid") + ".jpg"
-        );
+        // $("#bgimg").attr(
+        //   "src",
+        //   " assets/image_mercedes" + localStorage.getItem("bgid") + ".jpg"
+        // );
 
         ctx.drawImage(document.getElementById("bgimg"), 0, 0);
         const imgd = document.getElementById("nobgimg");
 
-        if (localStorage.getItem("bgid") == 0) {
-          destX = 358;
-          destY = 280;
-          ctx.drawImage(imgd, destX, destY, 196, 261);
-        } else if (localStorage.getItem("bgid") == 1) {
-          destX = 420;
-          destY = 250;
-          ctx.drawImage(imgd, destX, destY, 236, 314);
-        } else if (localStorage.getItem("bgid") == 2) {
-          destX = 420;
-          destY = 250;
-          ctx.drawImage(imgd, destX, destY, 236, 314);
-        }
+        // if (localStorage.getItem("bgid") == 0) {
+        //   destX = 358;
+        //   destY = 280;
+        //   ctx.drawImage(imgd, destX, destY, 196, 261);
+        // } else if (localStorage.getItem("bgid") == 1) {
+        //   destX = 420;
+        //   destY = 250;
+        //   ctx.drawImage(imgd, destX, destY, 236, 314);
+        // } else if (localStorage.getItem("bgid") == 2) {
+        //   destX = 420;
+        //   destY = 250;
+        //   ctx.drawImage(imgd, destX, destY, 236, 314);
+        // }
+
+        destX = 420;
+        destY = 250;
+        ctx.drawImage(imgd, destX, destY, 236, 314);
         addFileToBucket(
           "photobooth",
           dataURLtoFile(document.getElementById("imageCanvas").toDataURL()),
@@ -530,6 +668,11 @@
           ".png";
         link.href = document.getElementById("imageCanvas").toDataURL();
         link.click();
+      }
+
+      function ShareUsingQR() {
+        $(".thirdpage").hide();
+        $(".fourthpage").show();
       }
     </script>
   </body>
