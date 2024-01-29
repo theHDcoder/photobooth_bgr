@@ -136,7 +136,7 @@
   </head>
   <body>
     <div class="title">
-      <h1>Mercedes photobooth -f2</h1>
+      <h1>Mercedes photobooth -f3</h1>
     </div>
     <!-- start of pagezero -->
     <div class="pagezero">
@@ -258,7 +258,7 @@
     <div class="secondpage" style="display: none">
       <div class="camstuff" style="display: flex; justify-content: center">
         <div id="my_camera" onclick="take_snapshot() "></div>
-        <img id="hint" onclick="take_snapshot()" src="hint.png" alt="" />
+        <!-- <img id="hint" onclick="take_snapshot()" src="hint.png" alt="" /> -->
         <div id="results" style="display: none">
           <img id="snapimage" alt="" />
           <div class="cambtns" style="display: flex; justify-content: center">
@@ -267,6 +267,7 @@
               onclick="retake()"
               type="button"
               class="btn btn-primary"
+              style="width: 10rem; height: 4rem; margin: 3vw"
             >
               Retake
             </button>
@@ -275,6 +276,7 @@
               onclick="removebg()"
               type="button"
               class="btn btn-primary"
+              style="width: 10rem; height: 4rem; margin: 3vw"
             >
               Select
             </button>
@@ -379,18 +381,18 @@
           facingMode: "environment",
         });
         Webcam.attach("#my_camera");
-        setTimeout(
-          document
-            .getElementById("my_camera")
-            .appendChild(document.getElementById("hint")),
-          1000
-        );
+        // setTimeout(
+        //   document
+        //     .getElementById("my_camera")
+        //     .appendChild(document.getElementById("hint")),
+        //   1000
+        // );
       }
       function retake() {
         $(".secondpage").show();
 
         document.getElementById("my_camera").style.display = "block";
-        $("#hint").show();
+        // $("#hint").show();
         document.getElementById("results").style.display = "none";
         Webcam.set({
           width: 962,
@@ -410,9 +412,9 @@
           document.getElementById("results").style.display = "block";
           $("#snapimage").attr("src", data_uri);
         });
-        //Webcam.reset();
+        Webcam.reset();
         $("#my_camera").hide();
-        $("#hint").hide();
+        // $("#hint").hide();
       }
       // removw background
       // import { removeBackground } from "./remove-background.js";
@@ -476,15 +478,15 @@
 
         if (localStorage.getItem("bgid") == 0) {
           destX = 358;
-          destY = 272;
+          destY = 280;
           ctx.drawImage(imgd, destX, destY, 196, 261);
         } else if (localStorage.getItem("bgid") == 1) {
           destX = 420;
-          destY = 245;
+          destY = 250;
           ctx.drawImage(imgd, destX, destY, 236, 314);
         } else if (localStorage.getItem("bgid") == 2) {
           destX = 420;
-          destY = 245;
+          destY = 250;
           ctx.drawImage(imgd, destX, destY, 236, 314);
         }
         addFileToBucket(
