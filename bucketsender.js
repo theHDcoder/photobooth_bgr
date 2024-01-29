@@ -40,6 +40,7 @@ function addFileToBucket(albumName, file, fileName) {
     function (data) {
       // if (file.type != PDF || file.type != pdf) {
       console.log("Successfully uploaded photo.");
+      finalRender();
       //viewAlbum(albumName);
       // }
     },

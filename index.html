@@ -27,6 +27,7 @@
     ></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.768.0.js"></script>
     <script src="bucketsender.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.js"></script>
     <style>
       body {
         background-color: #185c7e;
@@ -189,23 +190,36 @@
       class="secondpage"
       style="display: none; position: absolute; top: 0; left: 0"
     >
-      <div
-        id="my_camera"
-        style="position: absolute"
-        onclick="take_snapshot() "
-      ></div>
-      <!-- <img id="hint" src="hint.png" alt="" /> -->
+      <div class="camstuff">
+        <div
+          id="my_camera"
+          style="position: absolute"
+          onclick="take_snapshot() "
+        ></div>
+        <!-- <img id="hint" src="hint.png" alt="" /> -->
 
-      <div id="results" style="display: none">
-        <img id="snapimage" alt="" />
-        <button
-          id="bgsel2"
-          onclick="removebg()"
-          type="button"
-          class="btn btn-primary"
-        >
-          Select
-        </button>
+        <div id="results" style="display: none">
+          <img id="snapimage" alt="" />
+          <button
+            id="imgretake"
+            onclick="retake()"
+            type="button"
+            class="btn btn-primary"
+          >
+            Retake
+          </button>
+          <button
+            id="bgsel2"
+            onclick="removebg()"
+            type="button"
+            class="btn btn-primary"
+          >
+            Select
+          </button>
+        </div>
+        <div class="loader" style="display: none">
+          <h1>"Loading..."</h1>
+        </div>
       </div>
       <!-- First, include the Webcam.js JavaScript Library -->
       <script type="text/javascript" src="webcam.min.js"></script>
@@ -238,6 +252,7 @@
           alt=""
           style="display: none"
         />
+        <div id="qrcode"></div>
       </div>
       <button
         id="imgdwnld"
@@ -303,22 +318,29 @@
         });
         Webcam.attach("#my_camera");
       }
+      function retake() {
+        $(".secondpage").show();
 
+        document.getElementById("my_camera").style.display = "block";
+
+        document.getElementById("results").style.display = "none";
+        Webcam.set({
+          width: 962,
+          height: 1280,
+          image_format: "jpeg",
+          jpeg_quality: 90,
+        });
+        Webcam.set("constraints", {
+          facingMode: "environment",
+        });
+        Webcam.attach("#my_camera");
+      }
       function take_snapshot() {
         // take snapshot and get image data
         Webcam.snap(function (data_uri) {
           // display results in page
           $("#results").show();
           $("#snapimage").attr("src", data_uri);
-          addFileToBucket(
-            "photobooth",
-            dataURLtoFile(data_uri),
-            document.getElementById("firstname").value +
-              document.getElementById("lastname").value +
-              document.getElementById("exampleInputEmail1").value +
-              randNum +
-              ".png"
-          );
         });
         Webcam.reset();
         $("#my_camera").hide();
@@ -341,6 +363,8 @@
       }
 
       function removebg() {
+        $(".camstuff").hide();
+        $(".loader").show();
         var fileData = dataURLtoFile(snapImage.src, "imageName.jpg");
         // Multipart file
         const formData = new FormData();
@@ -368,7 +392,6 @@
           .catch();
       }
       function finalResult() {
-        $(".secondpage").hide();
         var canvas = document.getElementById("imageCanvas");
         var ctx = canvas.getContext("2d");
         $("#bgimg").attr(
@@ -392,27 +415,36 @@
           destY = 245;
           ctx.drawImage(imgd, destX, destY, 236, 314);
         }
+        addFileToBucket(
+          "photobooth",
+          dataURLtoFile(document.getElementById("imageCanvas").toDataURL()),
+          document.getElementById("firstname").value +
+            document.getElementById("lastname").value +
+            document.getElementById("exampleInputEmail1").value +
+            randNum +
+            ".png"
+        );
 
         //canvas.setAttribute("style", "transform:rotateZ(90deg)");
-
-        $(".thirdpage").show();
       }
 
-      //Google drive
-      function uploadToGDrive() {
-        let res = document.getElementById("imageCanvas").toDataURL();
-        let spt = res.split("base64,")[1];
-        let obj = {
-          base64: spt,
-          type: "image/png",
-          name: "test.png",
-        };
-        fetch(url, {
-          method: "POST",
-          body: JSON.stringify(obj),
-        })
-          .then((r) => r.text())
-          .then((data) => console.log(data));
+      function finalRender() {
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+          text:
+            "https://hdbuckettest.s3.ap-south-1.amazonaws.com/photobooth/" +
+            document.getElementById("firstname").value +
+            document.getElementById("lastname").value +
+            document.getElementById("exampleInputEmail1").value +
+            randNum +
+            ".png",
+          width: 500,
+          height: 500,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+        $(".secondpage").hide();
+        $(".thirdpage").show();
       }
       function download() {
         var link = document.createElement("a");
