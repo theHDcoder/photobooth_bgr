@@ -450,6 +450,7 @@
     </div>
     <!-- end of 3rd page -->
     <script>
+      var elem = document.documentElement;
       function submitButton() {
         if (
           document.getElementById("firstname").value == "" ||
@@ -459,6 +460,15 @@
         } else {
           if (document.getElementById("exampleInputEmail1").value == "") {
             document.getElementById("exampleInputEmail1").value = "_";
+          }
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) {
+            /* Safari */
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) {
+            /* IE11 */
+            elem.msRequestFullscreen();
           }
           $(".pagezero").hide();
           // $(".firstpage").show();
