@@ -127,17 +127,16 @@
         right: -6vw;
       }
       #hint {
-        width: 94vw;
+        width: 100%;
         position: absolute;
-        left: 2vw;
-        height: 94vh;
-        top: 21vw;
+        height: 100%;
+        left: -2vw;
       }
     </style>
   </head>
   <body>
     <div class="title">
-      <h1>Mercedes photobooth -rbg12</h1>
+      <h1>Mercedes photobooth -f1</h1>
     </div>
     <!-- start of pagezero -->
     <div class="pagezero">
@@ -260,25 +259,26 @@
       <div class="camstuff" style="display: flex; justify-content: center">
         <div id="my_camera" onclick="take_snapshot() "></div>
         <img id="hint" onclick="take_snapshot()" src="hint.png" alt="" />
-
         <div id="results" style="display: none">
           <img id="snapimage" alt="" />
-          <button
-            id="imgretake"
-            onclick="retake()"
-            type="button"
-            class="btn btn-primary"
-          >
-            Retake
-          </button>
-          <button
-            id="bgsel2"
-            onclick="removebg()"
-            type="button"
-            class="btn btn-primary"
-          >
-            Select
-          </button>
+          <div class="cambtns" style="display: flex; justify-content: center">
+            <button
+              id="imgretake"
+              onclick="retake()"
+              type="button"
+              class="btn btn-primary"
+            >
+              Retake
+            </button>
+            <button
+              id="bgsel2"
+              onclick="removebg()"
+              type="button"
+              class="btn btn-primary"
+            >
+              Select
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -379,6 +379,12 @@
           facingMode: "environment",
         });
         Webcam.attach("#my_camera");
+        setTimeout(
+          document
+            .getElementById("my_camera")
+            .appendChild(document.getElementById("hint")),
+          1000
+        );
       }
       function retake() {
         $(".secondpage").show();
@@ -401,10 +407,10 @@
         // take snapshot and get image data
         Webcam.snap(function (data_uri) {
           // display results in page
-          $("#results").show();
+          document.getElementById("results").style.display = "block";
           $("#snapimage").attr("src", data_uri);
         });
-        Webcam.reset();
+        //Webcam.reset();
         $("#my_camera").hide();
         $("#hint").hide();
       }
@@ -455,6 +461,7 @@
             setTimeout(finalResult, 2000);
           })
           .catch();
+        //  setTimeout(finalResult, 50000);
       }
       function finalResult() {
         var canvas = document.getElementById("imageCanvas");
