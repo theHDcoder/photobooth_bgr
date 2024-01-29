@@ -11,6 +11,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #1f293a;
+  overflow: auto;
   /* background-image: url(./bg.jpg); */
 }
 .container {
