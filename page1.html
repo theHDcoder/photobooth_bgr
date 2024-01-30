@@ -12,9 +12,26 @@
       src="bharath_sample-removebg-preview.png"
       alt=""
       srcset=""
+      style="display: none"
     />
+    <img id="input2" src="" alt="" srcset="" />
+    <div class="can">
+      <canvas
+        id="canvas"
+        width="408"
+        height="611"
+        class="output"
+        style="display: none"
+      />
+    </div>
 
-    <canvas id="canvas" width="408" height="611" class="output" />
+    <canvas
+      id="canvas2"
+      width="800"
+      height="611"
+      class="output"
+      style="display: none"
+    />
 
     <script>
       // var image = document.getElementById("input");
@@ -52,8 +69,15 @@
         }
 
         context.putImageData(imageData, imageX, imageY);
+        var canvas2 = document.getElementById("canvas2");
+        var context2 = canvas2.getContext("2d");
+        document.getElementById("input2").src = document
+          .getElementById("canvas")
+          .toDataURL();
+        context2.drawImage(document.getElementById("input2"), 0, 0);
       };
       image.src = "bharath_sample-removebg-preview.png";
+
       // };
       // ctx.drawImage(image, 0, 0); // image to change
       // ctx.globalCompositeOperation = "value";
