@@ -189,7 +189,7 @@
 
       <div class="container">
         <div class="login-box">
-          <h2>Photobooth demo_1</h2>
+          <h2>Photobooth demo_2</h2>
           <form action="#">
             <div class="input-box">
               <input
@@ -358,7 +358,7 @@
         <div id="my_camera" onclick="take_snapshot()"></div>
         <img
           id="hint"
-          width="962"
+          width="600"
           height="auto"
           onclick="take_snapshot()"
           src="hint.png"
@@ -484,8 +484,8 @@
           // $(".firstpage").hide();
           $(".secondpage").show();
           Webcam.set({
-            width: 720,
-            height: 1080,
+            width: 600,
+            height: 800,
             image_format: "jpeg",
             jpeg_quality: 90,
           });
@@ -548,8 +548,8 @@
         $("#hint").show();
         document.getElementById("results").style.display = "none";
         Webcam.set({
-          width: 720,
-          height: 1080,
+          width: 600,
+          height: 800,
           image_format: "jpeg",
           jpeg_quality: 90,
         });
