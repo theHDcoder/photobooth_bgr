@@ -10,8 +10,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: black;
+  background: #1f293a;
   overflow: auto;
+  /* background-image: url(./bg.jpg); */
 }
 .container {
   position: relative;
@@ -26,7 +27,7 @@ body {
   left: 0;
   width: 32px;
   height: 6px;
-  background: #2c4766;
+  background: black;
   border-radius: 8px;
   transform-origin: 128px;
   transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
