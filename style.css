@@ -10,9 +10,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #1f293a;
+  background: black;
   overflow: auto;
-  /* background-image: url(./bg.jpg); */
+  background-image: url(assets/bgimage.png);
 }
 .container {
   position: relative;
