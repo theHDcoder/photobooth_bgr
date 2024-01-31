@@ -168,7 +168,7 @@
     <div class="pagezero">
       <div class="container">
         <div class="login-box">
-          <h2>demo_5</h2>
+          <h2>demo_6</h2>
           <form action="#">
             <div class="input-box">
               <input
@@ -433,7 +433,7 @@
         Share
       </button>
     </div>
-    <div id="fourthpage" class="fourthpage" style="display: none">
+    <div id="fourthbg" class="fourthpage" style="display: none">
       <img
         src="assets/header.png"
         width="587"
@@ -659,25 +659,22 @@
       }
 
       function finalRender() {
-        var imagebg = document.getElementById("fourthpage");
-        imagebg.onload = function () {
-          var qrcode = new QRCode(document.getElementById("qrcode"), {
-            text:
-              "https://hdbuckettest.s3.ap-south-1.amazonaws.com/photobooth/" +
-              document.getElementById("firstname").value +
-              document.getElementById("lastname").value +
-              document.getElementById("exampleInputEmail1").value +
-              randNum +
-              ".png",
-            width: 500,
-            height: 500,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H,
-          });
-          $(".secondpage").hide();
-          $(".thirdpage").show();
-        };
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+          text:
+            "https://hdbuckettest.s3.ap-south-1.amazonaws.com/photobooth/" +
+            document.getElementById("firstname").value +
+            document.getElementById("lastname").value +
+            document.getElementById("exampleInputEmail1").value +
+            randNum +
+            ".png",
+          width: 500,
+          height: 500,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+        $(".secondpage").hide();
+        $(".thirdpage").show();
       }
       function download() {
         var link = document.createElement("a");
@@ -692,8 +689,11 @@
       }
 
       function ShareUsingQR() {
-        $(".thirdpage").hide();
-        $(".fourthpage").show();
+        var imagebg = document.getElementById("fourthbg");
+        imagebg.onload = function () {
+          $(".thirdpage").hide();
+          $(".fourthpage").show();
+        };
       }
     </script>
   </body>
