@@ -32,6 +32,14 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.js"></script>
     <link rel="stylesheet" href="style.css" />
     <style>
+      .bg {
+        width: 100vw;
+        background-image: url(assets/bgimage.png);
+        height: 93vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
       .title {
         padding: 50px;
         margin: 3vw;
@@ -79,12 +87,13 @@
     </style>
   </head>
   <body>
-    <!-- <div class="title">
+    <div class="bg">
+      <!-- <div class="title">
       <h1>Mercedes-Benz Photobooth</h1>
     </div> -->
-    <!-- start of pagezero -->
-    <div class="pagezero">
-      <!-- <div class="login-container">
+      <!-- start of pagezero -->
+      <div class="pagezero">
+        <!-- <div class="login-container">
         <div class="login-header">
           <h2>Login</h2>
         </div>
@@ -128,106 +137,106 @@
         </div>
       </div> -->
 
-      <div class="container">
-        <div class="login-box">
-          <h2>demo_16</h2>
-          <form action="#">
-            <div class="input-box">
-              <input
-                type="text"
-                class="form-control"
-                id="firstname"
-                placeholder="*required"
-                aria-label="First name"
-                autocomplete="off"
-              />
-              <label>First Name :</label>
-            </div>
-            <div class="input-box">
-              <input
-                type="text"
-                class="form-control"
-                id="lastname"
-                placeholder="*required"
-                aria-label="Last name"
-                autocomplete="off"
-              />
-              <label>Last Name :</label>
-            </div>
-            <div class="input-box">
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                placeholder="optional"
-                aria-describedby="emailHelp"
-                autocomplete="off"
-              />
-              <label>Email :</label>
-            </div>
+        <div class="container">
+          <div class="login-box">
+            <h2>demo_16</h2>
+            <form action="#">
+              <div class="input-box">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstname"
+                  placeholder="*required"
+                  aria-label="First name"
+                  autocomplete="off"
+                />
+                <label>First Name :</label>
+              </div>
+              <div class="input-box">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastname"
+                  placeholder="*required"
+                  aria-label="Last name"
+                  autocomplete="off"
+                />
+                <label>Last Name :</label>
+              </div>
+              <div class="input-box">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="optional"
+                  aria-describedby="emailHelp"
+                  autocomplete="off"
+                />
+                <label>Email :</label>
+              </div>
 
-            <button type="submit" class="btn" onclick="submitButton()">
-              Start
-            </button>
-          </form>
+              <button type="submit" class="btn" onclick="submitButton()">
+                Start
+              </button>
+            </form>
+          </div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+          <span style="--i: 4"></span>
+          <span style="--i: 5"></span>
+          <span style="--i: 6"></span>
+          <span style="--i: 7"></span>
+          <span style="--i: 8"></span>
+          <span style="--i: 9"></span>
+          <span style="--i: 10"></span>
+          <span style="--i: 11"></span>
+          <span style="--i: 12"></span>
+          <span style="--i: 13"></span>
+          <span style="--i: 14"></span>
+          <span style="--i: 15"></span>
+          <span style="--i: 16"></span>
+          <span style="--i: 17"></span>
+          <span style="--i: 18"></span>
+          <span style="--i: 19"></span>
+          <span style="--i: 20"></span>
+          <span style="--i: 21"></span>
+          <span style="--i: 22"></span>
+          <span style="--i: 23"></span>
+          <span style="--i: 24"></span>
+          <span style="--i: 25"></span>
+          <span style="--i: 26"></span>
+          <span style="--i: 27"></span>
+          <span style="--i: 28"></span>
+          <span style="--i: 29"></span>
+          <span style="--i: 30"></span>
+          <span style="--i: 31"></span>
+          <span style="--i: 32"></span>
+          <span style="--i: 33"></span>
+          <span style="--i: 34"></span>
+          <span style="--i: 35"></span>
+          <span style="--i: 36"></span>
+          <span style="--i: 37"></span>
+          <span style="--i: 38"></span>
+          <span style="--i: 39"></span>
+          <span style="--i: 40"></span>
+          <span style="--i: 41"></span>
+          <span style="--i: 42"></span>
+          <span style="--i: 43"></span>
+          <span style="--i: 44"></span>
+          <span style="--i: 45"></span>
+          <span style="--i: 46"></span>
+          <span style="--i: 47"></span>
+          <span style="--i: 48"></span>
+          <span style="--i: 49"></span>
         </div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-        <span style="--i: 4"></span>
-        <span style="--i: 5"></span>
-        <span style="--i: 6"></span>
-        <span style="--i: 7"></span>
-        <span style="--i: 8"></span>
-        <span style="--i: 9"></span>
-        <span style="--i: 10"></span>
-        <span style="--i: 11"></span>
-        <span style="--i: 12"></span>
-        <span style="--i: 13"></span>
-        <span style="--i: 14"></span>
-        <span style="--i: 15"></span>
-        <span style="--i: 16"></span>
-        <span style="--i: 17"></span>
-        <span style="--i: 18"></span>
-        <span style="--i: 19"></span>
-        <span style="--i: 20"></span>
-        <span style="--i: 21"></span>
-        <span style="--i: 22"></span>
-        <span style="--i: 23"></span>
-        <span style="--i: 24"></span>
-        <span style="--i: 25"></span>
-        <span style="--i: 26"></span>
-        <span style="--i: 27"></span>
-        <span style="--i: 28"></span>
-        <span style="--i: 29"></span>
-        <span style="--i: 30"></span>
-        <span style="--i: 31"></span>
-        <span style="--i: 32"></span>
-        <span style="--i: 33"></span>
-        <span style="--i: 34"></span>
-        <span style="--i: 35"></span>
-        <span style="--i: 36"></span>
-        <span style="--i: 37"></span>
-        <span style="--i: 38"></span>
-        <span style="--i: 39"></span>
-        <span style="--i: 40"></span>
-        <span style="--i: 41"></span>
-        <span style="--i: 42"></span>
-        <span style="--i: 43"></span>
-        <span style="--i: 44"></span>
-        <span style="--i: 45"></span>
-        <span style="--i: 46"></span>
-        <span style="--i: 47"></span>
-        <span style="--i: 48"></span>
-        <span style="--i: 49"></span>
       </div>
-    </div>
-    <!-- end of page zero -->
+      <!-- end of page zero -->
 
-    <!-- start of first page -->
+      <!-- start of first page -->
 
-    <!-- <div class="firstpage" style="display: none">
+      <!-- <div class="firstpage" style="display: none">
       <div
         id="carouselExampleControls"
         class="carousel slide"
@@ -291,113 +300,114 @@
         </button>
       </div>
     </div> -->
-    <!-- end of first page -->
+      <!-- end of first page -->
 
-    <!-- second page -->
-    <div class="secondpage" style="display: none">
-      <div class="camstuff" style="display: flex; justify-content: center">
-        <div id="my_camera" onclick="take_snapshot()"></div>
-        <img
-          id="hint"
-          width="600"
-          height="auto"
-          onclick="take_snapshot()"
-          src="hint.png"
-          alt=""
-        />
-        <div id="results" style="display: none">
-          <img id="snapimage" alt="" />
-          <div class="cambtns" style="display: flex; justify-content: center">
-            <button
-              id="imgretake"
-              onclick="retake()"
-              type="button"
-              class="btn btn-primary"
-              style="width: 10rem; height: 4rem; margin: 3vw"
-            >
-              Retake
-            </button>
-            <button
-              id="bgsel2"
-              onclick="removebg()"
-              type="button"
-              class="btn btn-primary"
-              style="width: 10rem; height: 4rem; margin: 3vw"
-            >
-              Select
-            </button>
+      <!-- second page -->
+      <div class="secondpage" style="display: none">
+        <div class="camstuff" style="display: flex; justify-content: center">
+          <div id="my_camera" onclick="take_snapshot()"></div>
+          <img
+            id="hint"
+            width="600"
+            height="auto"
+            onclick="take_snapshot()"
+            src="hint.png"
+            alt=""
+          />
+          <div id="results" style="display: none">
+            <img id="snapimage" alt="" />
+            <div class="cambtns" style="display: flex; justify-content: center">
+              <button
+                id="imgretake"
+                onclick="retake()"
+                type="button"
+                class="btn btn-primary"
+                style="width: 10rem; height: 4rem; margin: 3vw"
+              >
+                Retake
+              </button>
+              <button
+                id="bgsel2"
+                onclick="removebg()"
+                type="button"
+                class="btn btn-primary"
+                style="width: 10rem; height: 4rem; margin: 3vw"
+              >
+                Select
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="loader"
-        style="
-          display: none;
+        <div
+          class="loader"
+          style="
+            display: none;
 
-          color: #ecf0f1;
-          margin-top: 2vw;
-        "
-      >
-        <img src="assets/Loader.gif" alt="Loading..." />
-        loading...
+            color: #ecf0f1;
+            margin-top: 2vw;
+          "
+        >
+          <img src="assets/Loader.gif" alt="Loading..." />
+          loading...
+        </div>
       </div>
-    </div>
-    <!-- end second page -->
+      <!-- end second page -->
 
-    <!-- start 3rd page -->
-    <div class="thirdpage" style="display: none">
-      <div class="output">
-        <canvas
-          id="imageCanvas"
-          width="1280"
-          height="853"
-          style="width: 60vw"
-        ></canvas>
-        <img
-          id="bgimg"
-          src="assets/image_mercedes1.jpg"
-          alt=""
-          style="display: none"
-        />
-        <img
-          id="nobgimg"
-          width="275"
-          height="366"
-          src=""
-          alt=""
-          style="display: none"
-        />
-        <img
-          id="nobgremastered"
-          width="275"
-          height="366"
-          src=""
-          alt=""
-          style="display: none"
-        />
+      <!-- start 3rd page -->
+      <div class="thirdpage" style="display: none">
+        <div class="output">
+          <canvas
+            id="imageCanvas"
+            width="1280"
+            height="853"
+            style="width: 60vw"
+          ></canvas>
+          <img
+            id="bgimg"
+            src="assets/image_mercedes1.jpg"
+            alt=""
+            style="display: none"
+          />
+          <img
+            id="nobgimg"
+            width="275"
+            height="366"
+            src=""
+            alt=""
+            style="display: none"
+          />
+          <img
+            id="nobgremastered"
+            width="275"
+            height="366"
+            src=""
+            alt=""
+            style="display: none"
+          />
+        </div>
+        <button
+          id="imgdwnld"
+          type="button"
+          class="btn btn-primary"
+          style="margin-top: 4vw"
+          onclick="download()"
+        >
+          Download
+        </button>
+        <button
+          id="imgdwnld"
+          type="button"
+          class="btn btn-primary"
+          style="margin-top: 4vw"
+          onclick="ShareUsingQR()"
+        >
+          Share
+        </button>
       </div>
-      <button
-        id="imgdwnld"
-        type="button"
-        class="btn btn-primary"
-        style="margin-top: 4vw"
-        onclick="download()"
-      >
-        Download
-      </button>
-      <button
-        id="imgdwnld"
-        type="button"
-        class="btn btn-primary"
-        style="margin-top: 4vw"
-        onclick="ShareUsingQR()"
-      >
-        Share
-      </button>
-    </div>
-    <div class="fourthpage" style="display: none">
-      <div class="qrcontainer">
-        <div id="qrcode"></div>
+      <div class="fourthpage" style="display: none">
+        <div class="qrcontainer">
+          <div id="qrcode"></div>
+        </div>
       </div>
     </div>
     <!-- end of 3rd page -->

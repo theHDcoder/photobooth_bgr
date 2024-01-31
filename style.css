@@ -12,7 +12,6 @@ body {
   min-height: 100vh;
   background: black;
   overflow: auto;
-  background-image: url(assets/bgimage.png);
 }
 .container {
   position: relative;
