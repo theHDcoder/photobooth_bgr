@@ -689,11 +689,14 @@
       }
 
       function ShareUsingQR() {
-        var imagebg = document.getElementById("fourthbg");
-        imagebg.onload = function () {
+        setTimeout(function () {
           $(".thirdpage").hide();
           $(".fourthpage").show();
-        };
+        }, 1000);
+        // var imagebg = document.getElementById("fourthbg");
+        // imagebg.onload = function () {
+
+        //  };
       }
     </script>
   </body>
