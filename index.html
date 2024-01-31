@@ -132,19 +132,19 @@
       #hint {
         width: 100vw;
         position: absolute;
-        height: 102vh;
-        top: 2vw;
+        height: 100vh;
+        top: 1vw;
         /* left: 7vw; */
       }
       .qrcontainer {
-        width: 60vw;
+        width: 63vw;
         background: white;
-        height: 45vh;
+        height: 47vh;
       }
       #qrcode {
         position: relative;
-        top: 5vw;
-        left: 6vw;
+        top: 3vw;
+        left: 4vw;
       }
     </style>
   </head>
@@ -200,7 +200,7 @@
 
       <div class="container">
         <div class="login-box">
-          <h2>demo_10</h2>
+          <h2>demo_11</h2>
           <form action="#">
             <div class="input-box">
               <input
@@ -609,8 +609,11 @@
         const formData = new FormData();
         formData.append("image_file", fileData);
         formData.append("size", "auto");
+        //previous
+        const apiKey = "6Ku8rC7dmThmRfUP71Fy3yzm";
 
-        const apiKey = "ZPAatNwnJvZgGo3iqaVSPzmk";
+        //paid subs
+        // const apiKey = "ZPAatNwnJvZgGo3iqaVSPzmk";
 
         fetch("https://api.remove.bg/v1.0/removebg", {
           method: "POST",
