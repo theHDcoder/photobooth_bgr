@@ -168,7 +168,7 @@
     <div class="pagezero">
       <div class="container">
         <div class="login-box">
-          <h2>demo_4</h2>
+          <h2>demo_5</h2>
           <form action="#">
             <div class="input-box">
               <input
@@ -433,7 +433,7 @@
         Share
       </button>
     </div>
-    <div class="fourthpage" style="display: none">
+    <div id="fourthpage" class="fourthpage" style="display: none">
       <img
         src="assets/header.png"
         width="587"
@@ -466,15 +466,15 @@
           if (document.getElementById("exampleInputEmail1").value == "") {
             document.getElementById("exampleInputEmail1").value = "_";
           }
-          // if (elem.requestFullscreen) {
-          //   elem.requestFullscreen();
-          // } else if (elem.webkitRequestFullscreen) {
-          //   /* Safari */
-          //   elem.webkitRequestFullscreen();
-          // } else if (elem.msRequestFullscreen) {
-          //   /* IE11 */
-          //   elem.msRequestFullscreen();
-          // }
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) {
+            /* Safari */
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) {
+            /* IE11 */
+            elem.msRequestFullscreen();
+          }
           $(".pagezero").hide();
           // $(".firstpage").show();
           // $(".firstpage").hide();
@@ -659,22 +659,25 @@
       }
 
       function finalRender() {
-        var qrcode = new QRCode(document.getElementById("qrcode"), {
-          text:
-            "https://hdbuckettest.s3.ap-south-1.amazonaws.com/photobooth/" +
-            document.getElementById("firstname").value +
-            document.getElementById("lastname").value +
-            document.getElementById("exampleInputEmail1").value +
-            randNum +
-            ".png",
-          width: 500,
-          height: 500,
-          colorDark: "#000000",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H,
-        });
-        $(".secondpage").hide();
-        $(".thirdpage").show();
+        var imagebg = document.getElementById("fourthpage");
+        imagebg.onload = function () {
+          var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text:
+              "https://hdbuckettest.s3.ap-south-1.amazonaws.com/photobooth/" +
+              document.getElementById("firstname").value +
+              document.getElementById("lastname").value +
+              document.getElementById("exampleInputEmail1").value +
+              randNum +
+              ".png",
+            width: 500,
+            height: 500,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H,
+          });
+          $(".secondpage").hide();
+          $(".thirdpage").show();
+        };
       }
       function download() {
         var link = document.createElement("a");
