@@ -168,7 +168,7 @@
     <div class="pagezero">
       <div class="container">
         <div class="login-box">
-          <h2>demo_6</h2>
+          <h2>demo_f1</h2>
           <form action="#">
             <div class="input-box">
               <input
@@ -449,7 +449,7 @@
         src="assets/qrfooter.png"
         width="682"
         height="167"
-        style="margin-top: 1vw; margin-left: -5vw"
+        style="margin-top: 1vw"
         alt=""
       />
     </div>
@@ -587,35 +587,35 @@
         $(".camstuff").hide();
         $(".loader").show();
         //uncomment below
-        // var fileData = dataURLtoFile(snapImage.src, "imageName.jpg");
-        // // Multipart file
-        // const formData = new FormData();
-        // formData.append("image_file", fileData);
-        // formData.append("size", "auto");
-        // //previous
-        // // const apiKey = "6Ku8rC7dmThmRfUP71Fy3yzm";
+        var fileData = dataURLtoFile(snapImage.src, "imageName.jpg");
+        // Multipart file
+        const formData = new FormData();
+        formData.append("image_file", fileData);
+        formData.append("size", "auto");
+        //previous
+        // const apiKey = "6Ku8rC7dmThmRfUP71Fy3yzm";
 
-        // //paid subs
-        // const apiKey = "ZPAatNwnJvZgGo3iqaVSPzmk";
+        //paid subs
+        const apiKey = "ZPAatNwnJvZgGo3iqaVSPzmk";
 
-        // fetch("https://api.remove.bg/v1.0/removebg", {
-        //   method: "POST",
-        //   headers: {
-        //     "X-Api-Key": apiKey,
-        //   },
-        //   body: formData,
-        // })
-        //   .then(function (reponse) {
-        //     return reponse.blob();
-        //   })
-        //   .then(function (blob) {
-        //     console.log(blob);
-        //     const url = URL.createObjectURL(blob);
-        //     displayImage.src = url;
-        //     setTimeout(finalResult, 2000);
-        //   })
-        //   .catch();
-        setTimeout(finalResult, 1000);
+        fetch("https://api.remove.bg/v1.0/removebg", {
+          method: "POST",
+          headers: {
+            "X-Api-Key": apiKey,
+          },
+          body: formData,
+        })
+          .then(function (reponse) {
+            return reponse.blob();
+          })
+          .then(function (blob) {
+            console.log(blob);
+            const url = URL.createObjectURL(blob);
+            displayImage.src = url;
+            setTimeout(finalResult, 2000);
+          })
+          .catch();
+        // setTimeout(finalResult, 1000);
       }
       function finalResult() {
         var canvas = document.getElementById("imageCanvas");
@@ -689,14 +689,8 @@
       }
 
       function ShareUsingQR() {
-        setTimeout(function () {
-          $(".thirdpage").hide();
-          $(".fourthpage").show();
-        }, 1000);
-        // var imagebg = document.getElementById("fourthbg");
-        // imagebg.onload = function () {
-
-        //  };
+        $(".thirdpage").hide();
+        $(".fourthpage").show();
       }
     </script>
   </body>
