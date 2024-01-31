@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #1f293a;
+  background: black;
   overflow: auto;
   /* background-image: url(./bg.jpg); */
 }
@@ -27,7 +27,7 @@ body {
   left: 0;
   width: 32px;
   height: 6px;
-  background: black;
+  background: #2c4766;
   border-radius: 8px;
   transform-origin: 128px;
   transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
