@@ -1,7 +1,3 @@
-//client id : 204053716384-gqrpqu7k8qk24cgc5ogor40v6bgtskbo.apps.googleusercontent.com
-
-//client secret : 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
-
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get("code");
 const redirect_uri = "";
